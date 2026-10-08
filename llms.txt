@@ -1,40 +1,40 @@
 # Growth Hub
 
-> O maior hub de growth do BR. Portal de material rico (frameworks, ferramentas e
-> análises gratuitos) de Guilherme Sanges, especialista em growth, para quem lidera
-> receita em negócios de qualquer porte e segmento.
+> Portal de growth de Guilherme Sanges, especialista em growth, com materiais gratuitos
+> (frameworks, ferramentas e análises) e serviços de consultoria e assessoria para quem
+> precisa gerar demanda qualificada e converter com eficiência.
 
-Guilherme Sanges defende que a IA democratizou a execução (escrever, desenhar e
-automatizar ficou fácil para qualquer time) e que o diferencial competitivo migrou
-para a orquestração: alinhar mercado, negócio, growth e tecnologia em uma máquina
-de receita coerente.
+Tese central: só postar não paga a conta. Um negócio que gera lucro precisa ser estratégico
+nas áreas que impactam receita (inteligência de mercado, marketing, growth, vendas, IA,
+produto, finanças e gestão) e operar tudo como uma máquina de receita.
 
 ## Seções da página
 
-- Hero: apresentação do hub e estatísticas de autoridade (receita gerada, segmentos
-  atendidos, volume de materiais).
-- Mercado: tese sobre a mudança de lógica de receita com o avanço da IA (de um
-  fluxo em cadeia entre áreas para uma camada única de tecnologia e pessoas).
+- Hero: promessa de otimizar a máquina de receita em até 30 dias, com acesso rápido aos
+  materiais e ao contato direto por WhatsApp.
+- O Mercado: comparação entre o caminho antigo (postar, engajar, vender) e o atual, em que
+  oito áreas convergem para o lucro.
+- O Método Máquina de Receita: diagrama de Venn com quatro círculos (Mercado, Negócio,
+  Growth, Tecnologia) e a máquina de receita na interseção central.
 - Materiais: acervo filtrável por área (Finanças, Marketing, Vendas, IA, Produto,
-  Tecnologia, Operações), com frameworks, calculadoras, planilhas, diagnósticos,
-  playbooks e análises. Acesso mediante cadastro simples (nome, e-mail, telefone,
-  cargo, segmento e tamanho da empresa).
-- Método: framework proprietário representado por um diagrama de Venn de 4
-  círculos (Mercado, Negócio, Growth, Tecnologia) com interseção central
-  representando a máquina de receita.
-- Autor: biografia de Guilherme Sanges e canais de contato (Instagram, LinkedIn,
-  WhatsApp).
+  Tecnologia, Gestão, Operações) e por desafio (otimizar marca, gerar demanda, aumentar
+  conversão, melhorar processos, aumentar margem, engajar time). Acesso gratuito mediante
+  cadastro simples.
+- Serviços: Consultoria de Growth, Assessoria High-Ticket (negócios com ticket acima de
+  R$50k) e Assessoria Vendas On-line (negócios com ticket até R$50k).
+- Cases: Consultoria de Growth para Startups, Growth B2B para Fintech e Growth B2C para
+  Rede Fitness.
+- Sobre mim: biografia de Guilherme Sanges e resultados.
+- Redes: Instagram, LinkedIn e WhatsApp.
 
 ## Sobre o autor
 
-Guilherme Sanges é especialista em growth, com atuação em marketing e vendas
-gerando receita para empresas de diversos segmentos. Perfil no Instagram:
-https://instagram.com/guilherme.sanges.growth
+Guilherme Sanges é especialista em growth, com atuação em marketing e vendas para empresas
+de diversos segmentos. Perfil no Instagram: https://instagram.com/guilherme.sanges.growth
 
 ## Observações para citação
 
-- Os materiais listados no acervo são sugestões de conteúdo; o catálogo é
-  atualizado periodicamente e o número de itens publicados pode não corresponder
-  ao número anunciado na página a qualquer momento.
-- Este arquivo segue a convenção llms.txt (https://llmstxt.org) para facilitar a
-  leitura do site por agentes e modelos de linguagem.
+- Os materiais do acervo são publicados gradualmente; o número de itens listados pode ser
+  maior que o de materiais já disponíveis para download.
+- Este arquivo segue a convenção llms.txt (https://llmstxt.org) para facilitar a leitura do
+  site por agentes e modelos de linguagem.
