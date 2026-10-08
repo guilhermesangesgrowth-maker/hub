@@ -55,7 +55,8 @@
         "description": "Guilherme é Especialista em Growth e já gerou mais de R$1Bi com ações de marketing e vendas para empresas.",
         "url": "https://guilhermesangesgrowth-maker.github.io/hub/",
         "sameAs": [
-          "https://instagram.com/guilherme.sanges.growth"
+          "https://instagram.com/guilherme.sanges.growth",
+          "https://www.linkedin.com/in/guilhermesanges/"
         ]
       },
       {
@@ -68,7 +69,6 @@
   }
   </script>
 </head>
-<body>
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav__inner">
@@ -83,6 +83,15 @@
       <a href="#redes">Redes</a>
     </nav>
     <a href="#servicos" class="btn btn--ghost nav__cta">Ver serviços</a>
+    <nav class="nav__mobile" id="navMobile" aria-label="Menu principal">
+      <a href="#metodo">Método</a>
+      <a href="#acervo">Materiais</a>
+      <a href="#servicos">Soluções</a>
+      <a href="#cases">Cases</a>
+    </nav>
+    <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -196,10 +205,10 @@
     <div class="method" id="method">
 <svg class="method__svg" id="vennSvg" viewBox="0 0 400 400" role="group" aria-label="Diagrama Venn com quatro círculos que se cruzam: Mercado, Negócio, Growth e Tecnologia">
   <g class="venn">
-    <circle class="ring" data-key="mercado" tabindex="0" role="button" aria-label="Mercado" cx="200" cy="138" r="115" />
-    <circle class="ring" data-key="negocio" tabindex="0" role="button" aria-label="Negócio" cx="262" cy="200" r="115" />
-    <circle class="ring" data-key="growth" tabindex="0" role="button" aria-label="Growth" cx="200" cy="262" r="115" />
-    <circle class="ring" data-key="tecnologia" tabindex="0" role="button" aria-label="Tecnologia" cx="138" cy="200" r="115" />
+    <circle class="ring" data-key="mercado" cx="200" cy="138" r="115" />
+    <circle class="ring" data-key="negocio" cx="262" cy="200" r="115" />
+    <circle class="ring" data-key="growth" cx="200" cy="262" r="115" />
+    <circle class="ring" data-key="tecnologia" cx="138" cy="200" r="115" />
   </g>
   <circle class="venn__core" cx="200" cy="200" r="46" />
   <text class="ring__label" data-key="mercado" x="200" y="70">MERCADO</text>
@@ -210,20 +219,6 @@
   <text class="core__label" x="200" y="210">DE RECEITA</text>
 </svg>
 
-      <div class="method__panel">
-        <ul class="method__list">
-          <li><button type="button" class="method__item is-active" data-key="mercado">Mercado</button></li>
-          <li><button type="button" class="method__item" data-key="negocio">Negócio</button></li>
-          <li><button type="button" class="method__item" data-key="growth">Growth</button></li>
-          <li><button type="button" class="method__item" data-key="tecnologia">Tecnologia</button></li>
-        </ul>
-        <div class="method__detail" id="methodDetail" aria-live="polite">
-          <h3 id="methodDetailTitle">Mercado</h3>
-          <p class="method__hook" id="methodDetailHook">Seu cliente muda, você acompanha?</p>
-          <p id="methodDetailText">Em 2026 o mercado é dinâmico e ganha o jogo quem tem dados, tecnologia e eficiência operacional alinhados para acompanhar.</p>
-        </div>
-        <p class="method__hint">Passe o mouse ou toque em um círculo para ver o detalhe.</p>
-      </div>
     </div>
   </section>
 
@@ -451,7 +446,7 @@
         </span>
         <span class="social-card__cta">Seguir →</span>
       </a>
-      <a class="social-card" href="https://linkedin.com" target="_blank" rel="noopener">
+      <a class="social-card" href="https://www.linkedin.com/in/guilhermesanges/" target="_blank" rel="noopener">
         <span class="social-card__icon">in</span>
         <span class="social-card__meta">
           <strong>LinkedIn</strong>
@@ -493,7 +488,7 @@
       <div class="footer__col">
         <strong>Redes</strong>
         <a href="https://instagram.com/guilherme.sanges.growth" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/guilhermesanges/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://api.whatsapp.com/send/?phone=5519998878022&amp;text=Ol%C3%A1,%20vim%20do%20hub%20de%20growth%20e%20quero%20saber%20sobre%20o%20m%C3%A9todo%20M%C3%A1quina%20de%20Receita!" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>

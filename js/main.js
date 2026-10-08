@@ -47,40 +47,7 @@ document.getElementById("scrollCue").addEventListener("click", () => {
   document.head.appendChild(script);
 })();
 
-/* ============ MÉTODO: DIAGRAMA DE CÍRCULOS ============ */
-const METHOD_DETAILS = {
-  mercado: {
-    title: "Mercado",
-    hook: "Seu cliente muda, você acompanha?",
-    text: "Em 2026 o mercado é dinâmico e ganha o jogo quem tem dados, tecnologia e eficiência operacional alinhados para acompanhar.",
-  },
-  negocio: {
-    title: "Negócio",
-    hook: "Empresa sem foco em Receita é uma máquina de desperdício.",
-    text: "Você tem um negócio, porém tem uma máquina que gera lucro? Gestão, finanças e operação precisam estar alinhados para gerar rentabilidade.",
-  },
-  growth: {
-    title: "Growth",
-    hook: "Canais de aquisição e máquina de vendas mudam a todo momento, sua empresa acompanha?",
-    text: "Seu cliente continua buscando uma solução, vence a empresa que domina distribuição.",
-  },
-  tecnologia: {
-    title: "Tecnologia",
-    hook: "Construção deixou de ser diferencial competitivo.",
-    text: "Nesse momento seu concorrente tem a melhor infraestrutura de tecnologia possível. Você se mantém competitivo? Ganha o mercado quem transforma tecnologia em lucro.",
-  },
-};
-
-function setMethod(key) {
-  const detail = METHOD_DETAILS[key];
-  if (!detail) return;
-  document.getElementById("methodDetailTitle").textContent = detail.title;
-  document.getElementById("methodDetailHook").textContent = detail.hook;
-  document.getElementById("methodDetailText").textContent = detail.text;
-  document.querySelectorAll("#vennSvg [data-key]").forEach((el) => el.classList.toggle("is-active", el.dataset.key === key));
-  document.querySelectorAll(".method__item").forEach((b) => b.classList.toggle("is-active", b.dataset.key === key));
-}
-
+/* ============ MÉTODO: DIAGRAMA DE VENN (destaque ao passar o mouse) ============ */
 const vennSvg = document.getElementById("vennSvg");
 const vennCircles = Array.from(vennSvg.querySelectorAll("circle.ring")).map((c) => ({
   key: c.dataset.key,
@@ -89,7 +56,11 @@ const vennCircles = Array.from(vennSvg.querySelectorAll("circle.ring")).map((c) 
   r: +c.getAttribute("r"),
 }));
 
-// Nas interseções, ativa o círculo cujo centro está mais próximo do ponteiro.
+function setMethod(key) {
+  vennSvg.querySelectorAll("[data-key]").forEach((el) => el.classList.toggle("is-active", el.dataset.key === key));
+}
+
+// Nas interseções, destaca o círculo cujo centro está mais próximo do ponteiro.
 function vennKeyAt(evt) {
   const rect = vennSvg.getBoundingClientRect();
   const scale = 400 / rect.width;
@@ -105,27 +76,11 @@ function vennKeyAt(evt) {
 
 vennSvg.addEventListener("pointermove", (e) => {
   if (e.pointerType === "touch") return;
-  const key = vennKeyAt(e);
-  if (key) setMethod(key);
+  setMethod(vennKeyAt(e));
 });
-vennSvg.addEventListener("click", (e) => {
-  const key = vennKeyAt(e);
-  if (key) setMethod(key);
-});
-vennSvg.querySelectorAll("circle.ring").forEach((c) => {
-  c.addEventListener("focus", () => setMethod(c.dataset.key));
-  c.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setMethod(c.dataset.key);
-    }
-  });
-});
-setMethod("mercado");
-document.querySelectorAll(".method__item").forEach((btn) => {
-  btn.addEventListener("click", () => setMethod(btn.dataset.key));
-  btn.addEventListener("mouseenter", () => setMethod(btn.dataset.key));
-});
+vennSvg.addEventListener("pointerleave", () => setMethod(null));
+vennSvg.addEventListener("click", (e) => setMethod(vennKeyAt(e)));
+
 
 /* ============ FILTERS ============ */
 const categorySelect = document.getElementById("filterCategory");
@@ -146,12 +101,30 @@ CHALLENGES.forEach((challenge) => {
   challengeSelect.appendChild(opt);
 });
 
+function countMatches(category, challenge) {
+  return DELIVERABLES.filter(
+    (d) =>
+      (category === "todos" || d.category === category) &&
+      (challenge === "todos" || d.challenges.includes(challenge))
+  ).length;
+}
+
+// Se a combinação não tem nenhum material, o filtro anterior volta para "todos"
+// e o que o visitante acabou de escolher é preservado.
 categorySelect.addEventListener("change", () => {
   activeCategory = categorySelect.value;
+  if (countMatches(activeCategory, activeChallenge) === 0) {
+    activeChallenge = "todos";
+    challengeSelect.value = "todos";
+  }
   renderCards();
 });
 challengeSelect.addEventListener("change", () => {
   activeChallenge = challengeSelect.value;
+  if (countMatches(activeCategory, activeChallenge) === 0) {
+    activeCategory = "todos";
+    categorySelect.value = "todos";
+  }
   renderCards();
 });
 
@@ -160,6 +133,7 @@ const carouselEl = document.getElementById("carousel");
 
 function renderCards() {
   carouselEl.innerHTML = "";
+  carouselEl.scrollLeft = 0;
   const items = DELIVERABLES.filter((d) => {
     const matchesCategory = activeCategory === "todos" || d.category === activeCategory;
     const matchesChallenge = activeChallenge === "todos" || d.challenges.includes(activeChallenge);
@@ -417,3 +391,82 @@ window.addEventListener(
   },
   { passive: true }
 );
+
+/* ============ MENU MOBILE (SANDUÍCHE) ============ */
+(function initMobileNav() {
+  const nav = document.getElementById("nav");
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMobile");
+  if (!nav || !toggle || !menu) return;
+
+  function setOpen(open) {
+    nav.classList.toggle("nav--open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  }
+
+  toggle.addEventListener("click", () => setOpen(!nav.classList.contains("nav--open")));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+  window.matchMedia("(min-width: 860px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+})();
+
+/* ============ CASES: CARROSSEL AUTOMÁTICO NO MOBILE (4s) ============ */
+(function initCasesCarousel() {
+  const grid = document.querySelector(".cases-grid");
+  if (!grid) return;
+
+  const mobile = window.matchMedia("(max-width: 899px)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timer = null;
+  let resumeTimer = null;
+  let index = 0;
+
+  const cards = () => grid.querySelectorAll(".case-card");
+
+  function currentIndex() {
+    const list = cards();
+    if (!list.length) return 0;
+    const step = list[0].offsetWidth + (parseFloat(getComputedStyle(grid).columnGap) || 14);
+    return Math.max(0, Math.min(list.length - 1, Math.round(grid.scrollLeft / step)));
+  }
+
+  function go(n) {
+    const list = cards();
+    if (!list.length) return;
+    index = (n + list.length) % list.length;
+    grid.scrollTo({ left: list[index].offsetLeft, behavior: "smooth" });
+  }
+
+  function start() {
+    if (reduce || timer || !mobile.matches) return;
+    timer = setInterval(() => go(currentIndex() + 1), 4000);
+  }
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+    clearTimeout(resumeTimer);
+  }
+  function resumeLater() {
+    stop();
+    resumeTimer = setTimeout(start, 6000);
+  }
+
+  grid.addEventListener("touchstart", stop, { passive: true });
+  grid.addEventListener("touchend", resumeLater, { passive: true });
+  grid.addEventListener("mouseenter", stop);
+  grid.addEventListener("mouseleave", start);
+  grid.addEventListener("focusin", stop);
+  grid.addEventListener("focusout", start);
+
+  mobile.addEventListener("change", () => {
+    stop();
+    if (mobile.matches) start();
+    else grid.scrollLeft = 0;
+  });
+  start();
+})();
